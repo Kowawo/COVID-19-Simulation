@@ -1,0 +1,2925 @@
+[gd_scene load_steps=105 format=2]
+
+[ext_resource path="res://Scripts/Settings/LineEditVaccinated.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Settings/LineEditEdgeLength.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Settings/LineEditMedicalFaceMask.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Settings/LineEditMultiplyForIndoor.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Settings/LineEditInfectedPeople.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Settings/SaveButton.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Settings/LineEditRemainingPeople.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Settings/LineEditRecoveredPeople.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Settings/LineEditVaccinatedPeople.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Settings/Reset.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Settings/LineEditPopulation.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/Settings/LineEditInfected.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/Settings/LineEditDaysToRecover.gd" type="Script" id=13]
+[ext_resource path="res://Ressource/SettingsFont.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Scripts/Settings/Cancel.gd" type="Script" id=15]
+[ext_resource path="res://Images/Knob.png" type="Texture" id=16]
+[ext_resource path="res://Images/Base.png" type="Texture" id=17]
+[ext_resource path="res://Images/GradientBase.png" type="Texture" id=18]
+[ext_resource path="res://Scripts/Settings/ToggleTree.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/Settings/LineEditDeathRecovered.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/Settings/LineEditDeathRemaining.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/Settings/LineEditDeathVaccinated.gd" type="Script" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="Animation" id=2]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "ToggleOff"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "ToggleOn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id=8]
+states/ToggleOff/node = SubResource( 4 )
+states/ToggleOff/position = Vector2( 268, 129 )
+states/ToggleOn/node = SubResource( 5 )
+states/ToggleOn/position = Vector2( 706, 129 )
+transitions = [ "ToggleOn", "ToggleOff", SubResource( 6 ), "ToggleOff", "ToggleOn", SubResource( 7 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="Animation" id=11]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="Animation" id=15]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="Animation" id=19]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="Animation" id=23]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=25]
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="Animation" id=27]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="Animation" id=31]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.262745, 0.564706, 0.737255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxEmpty" id=36]
+
+[sub_resource type="StyleBoxFlat" id=37]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="InputEventKey" id=38]
+scancode = 16777221
+
+[sub_resource type="ShortCut" id=39]
+shortcut = SubResource( 38 )
+
+[sub_resource type="StyleBoxFlat" id=40]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.262745, 0.564706, 0.737255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=41]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxEmpty" id=42]
+
+[sub_resource type="StyleBoxFlat" id=43]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id=44]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.262745, 0.564706, 0.737255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=45]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxEmpty" id=46]
+
+[sub_resource type="StyleBoxFlat" id=47]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="InputEventKey" id=48]
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=49]
+shortcut = SubResource( 48 )
+
+[sub_resource type="StyleBoxEmpty" id=50]
+
+[sub_resource type="Animation" id=51]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=52]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=53]
+
+[sub_resource type="StyleBoxEmpty" id=54]
+
+[sub_resource type="Animation" id=55]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=56]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=57]
+
+[sub_resource type="StyleBoxEmpty" id=58]
+
+[sub_resource type="Animation" id=59]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=60]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=61]
+
+[sub_resource type="StyleBoxEmpty" id=62]
+
+[sub_resource type="Animation" id=63]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=64]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=65]
+
+[sub_resource type="Animation" id=66]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=67]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=68]
+
+[sub_resource type="Animation" id=69]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=70]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=71]
+
+[sub_resource type="Animation" id=72]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=73]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=74]
+
+[sub_resource type="StyleBoxEmpty" id=75]
+
+[sub_resource type="Animation" id=76]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=77]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=78]
+
+[sub_resource type="StyleBoxEmpty" id=79]
+
+[sub_resource type="Animation" id=80]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 53, 9 ), Vector2( 5, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ), Color( 0, 0.529412, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=81]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Knob:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 9 ), Vector2( 53, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gradient:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.529412, 1, 0 ), Color( 0, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=82]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 960.0
+margin_bottom = 540.0
+color = Color( 0.176471, 0.168627, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 20.0
+margin_right = -2.0
+margin_bottom = -134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column1" type="HBoxContainer" parent="TabContainer/Settings/HBoxContainer"]
+margin_right = 314.0
+margin_bottom = 374.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Settings/HBoxContainer/Column1"]
+margin_right = 314.0
+margin_bottom = 374.0
+size_flags_horizontal = 3
+
+[node name="Population" type="Label" parent="TabContainer/Settings/HBoxContainer/Column1/VBoxContainer"]
+margin_right = 314.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Specify the entire population here.
+
+Attention: Too large population can lead to crashes.
+
+Default: 1.000"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_fonts/font = ExtResource( 14 )
+text = "Population"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfectedPeople" type="Label" parent="TabContainer/Settings/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 54.0
+margin_right = 314.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Enter here the total number of infected, which is directed to the population.
+Here, 100% corresponds to the total number of the population.
+
+Note: 1% = 0,01
+
+Default: 0,01"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_fonts/font = ExtResource( 14 )
+text = "Infected people"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VaccinatedPeople" type="Label" parent="TabContainer/Settings/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 108.0
+margin_right = 314.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Enter here the total number of vaccinated, which is directed to the population.
+Here, 100% corresponds to the total number of the population.
+
+Note: 1% = 0,01
+
+Default: 0,01"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_fonts/font = ExtResource( 14 )
+text = "Vaccinated people"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DaysToRecover" type="Label" parent="TabContainer/Settings/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 162.0
+margin_right = 314.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Number of days until recovery arrives.
+
+Default: 7"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_fonts/font = ExtResource( 14 )
+text = "Days to recover"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EdgeLengthOfPlayground" type="Label" parent="TabContainer/Settings/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 216.0
+margin_right = 314.0
+margin_bottom = 266.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Edge length of playground.
+
+Default: 50"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_fonts/font = ExtResource( 14 )
+text = "Edge length of playground"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MedicalFaceMaskOn" type="Label" parent="TabContainer/Settings/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 270.0
+margin_right = 314.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Default: False"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_fonts/font = ExtResource( 14 )
+text = "Medical face mask off"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Outdoor" type="Label" parent="TabContainer/Settings/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 324.0
+margin_right = 314.0
+margin_bottom = 374.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Default: Outdoor"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_fonts/font = ExtResource( 14 )
+text = "Outdoor"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column2" type="HBoxContainer" parent="TabContainer/Settings/HBoxContainer"]
+margin_left = 318.0
+margin_right = 632.0
+margin_bottom = 374.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Settings/HBoxContainer/Column2"]
+margin_right = 314.0
+margin_bottom = 374.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="PopulationButton" type="CheckButton" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 117.0
+margin_right = 197.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/PopulationButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/PopulationButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/PopulationButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/PopulationButton"]
+anims/ToggleOff = SubResource( 2 )
+anims/ToggleOn = SubResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/PopulationButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 9 )
+script = ExtResource( 19 )
+
+[node name="InfectedPeopleButton" type="CheckButton" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 117.0
+margin_top = 54.0
+margin_right = 197.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+custom_styles/focus = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/InfectedPeopleButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/InfectedPeopleButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/InfectedPeopleButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/InfectedPeopleButton"]
+anims/ToggleOff = SubResource( 11 )
+anims/ToggleOn = SubResource( 12 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/InfectedPeopleButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 13 )
+script = ExtResource( 19 )
+
+[node name="VaccinatedPeopleButton" type="CheckButton" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 117.0
+margin_top = 108.0
+margin_right = 197.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleButton"]
+anims/ToggleOff = SubResource( 15 )
+anims/ToggleOn = SubResource( 16 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 17 )
+script = ExtResource( 19 )
+
+[node name="DaysToRecoverButton" type="CheckButton" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 117.0
+margin_top = 162.0
+margin_right = 197.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+custom_styles/focus = SubResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/DaysToRecoverButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/DaysToRecoverButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/DaysToRecoverButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/DaysToRecoverButton"]
+anims/ToggleOff = SubResource( 19 )
+anims/ToggleOn = SubResource( 20 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/DaysToRecoverButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 21 )
+script = ExtResource( 19 )
+
+[node name="EdgeLengthButton" type="CheckButton" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 117.0
+margin_top = 216.0
+margin_right = 197.0
+margin_bottom = 266.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+custom_styles/focus = SubResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/EdgeLengthButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/EdgeLengthButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 3.5
+margin_right = 80.0
+margin_bottom = 35.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/EdgeLengthButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/EdgeLengthButton"]
+anims/ToggleOff = SubResource( 23 )
+anims/ToggleOn = SubResource( 24 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/EdgeLengthButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 25 )
+script = ExtResource( 19 )
+
+[node name="MedicalFaceMaskButton" type="CheckButton" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 117.0
+margin_top = 270.0
+margin_right = 197.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+custom_styles/focus = SubResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskButton"]
+anims/ToggleOff = SubResource( 27 )
+anims/ToggleOn = SubResource( 28 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 29 )
+script = ExtResource( 19 )
+
+[node name="OutInDoorsButton" type="CheckButton" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 117.0
+margin_top = 324.0
+margin_right = 197.0
+margin_bottom = 374.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+custom_styles/focus = SubResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/OutInDoorsButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/OutInDoorsButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/OutInDoorsButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/OutInDoorsButton"]
+anims/ToggleOff = SubResource( 31 )
+anims/ToggleOn = SubResource( 32 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/OutInDoorsButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 33 )
+script = ExtResource( 19 )
+
+[node name="Column3" type="HBoxContainer" parent="TabContainer/Settings/HBoxContainer"]
+margin_left = 636.0
+margin_right = 950.0
+margin_bottom = 374.0
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Settings"]
+visible = false
+margin_left = 650.0
+margin_top = 20.0
+margin_right = 950.0
+margin_bottom = 67.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "How many people total?"
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="TabContainer/Settings"]
+visible = false
+margin_left = 650.0
+margin_top = 73.0
+margin_right = 950.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "How many percent are infected?"
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit3" type="LineEdit" parent="TabContainer/Settings"]
+visible = false
+margin_left = 650.0
+margin_top = 126.0
+margin_right = 950.0
+margin_bottom = 173.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "How many percent are vaccinated?"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit4" type="LineEdit" parent="TabContainer/Settings"]
+visible = false
+margin_left = 650.0
+margin_top = 178.0
+margin_right = 950.0
+margin_bottom = 225.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Days to recover"
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit5" type="LineEdit" parent="TabContainer/Settings"]
+visible = false
+margin_left = 650.0
+margin_top = 231.0
+margin_right = 950.0
+margin_bottom = 278.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Edge length in meter"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveButton" type="Button" parent="TabContainer/Settings"]
+margin_left = 100.0
+margin_top = 440.0
+margin_right = 280.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 0, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 34 )
+custom_styles/pressed = SubResource( 35 )
+custom_styles/focus = SubResource( 36 )
+custom_styles/normal = SubResource( 37 )
+custom_fonts/font = ExtResource( 14 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 39 )
+text = "Save"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetButton" type="Button" parent="TabContainer/Settings"]
+margin_left = 390.0
+margin_top = 440.0
+margin_right = 570.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 0, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 40 )
+custom_styles/pressed = SubResource( 41 )
+custom_styles/focus = SubResource( 42 )
+custom_styles/normal = SubResource( 43 )
+custom_fonts/font = ExtResource( 14 )
+text = "Reset"
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="TabContainer/Settings"]
+margin_left = 675.0
+margin_top = 440.0
+margin_right = 855.0
+margin_bottom = 480.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 44 )
+custom_styles/pressed = SubResource( 45 )
+custom_styles/focus = SubResource( 46 )
+custom_styles/normal = SubResource( 47 )
+custom_fonts/font = ExtResource( 14 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 49 )
+text = "Cancel"
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Indoor" type="Label" parent="TabContainer/Settings"]
+margin_left = 620.0
+margin_top = 340.0
+margin_right = 930.0
+margin_bottom = 390.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Default: Outdoor"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_fonts/font = ExtResource( 14 )
+text = "Indoor"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HoverNote" type="Label" parent="TabContainer/Settings"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -187.5
+margin_top = -104.0
+margin_right = 187.5
+margin_bottom = -85.0
+custom_fonts/font = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MedicalFaceMaskOff" type="Label" parent="TabContainer/Settings"]
+margin_left = 620.0
+margin_top = 290.0
+margin_right = 930.0
+margin_bottom = 340.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Default: False"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_fonts/font = ExtResource( 14 )
+text = "Medical face mask on"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Probabilities" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Probabilities"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Probabilities/ScrollContainer"]
+margin_right = 952.0
+margin_bottom = 768.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TitleRiskOfInfection" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer"]
+margin_right = 940.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+text = "Risk of infection"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 50.0
+margin_right = -2.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column1" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer"]
+margin_right = 310.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column1"]
+margin_right = 310.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RecoveredPeople" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column1/VBoxContainer"]
+margin_right = 310.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Risk of infection for recovered.
+
+Note: 1% = 0,01
+
+Default: 0,05"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 14 )
+text = "Recovered People"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VaccinatedPeople" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 54.0
+margin_right = 310.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Risk of infection for vaccinated people.
+
+Note: 1% = 0,01
+
+Default: 0,025"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 14 )
+text = "Vaccinated People"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RemainingPeople" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 108.0
+margin_right = 310.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Risk of infection for the rest.
+
+Note: 1% = 0,01
+
+Default: 0,5"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 14 )
+text = "Remaining People"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column2" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer"]
+margin_left = 314.0
+margin_right = 624.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2"]
+margin_right = 310.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="RecoveredPeopleButton" type="CheckButton" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 115.0
+margin_right = 195.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 50 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleButton"]
+anims/ToggleOff = SubResource( 51 )
+anims/ToggleOn = SubResource( 52 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 53 )
+script = ExtResource( 19 )
+
+[node name="VaccinatedPeopleProbButton" type="CheckButton" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 115.0
+margin_top = 54.0
+margin_right = 195.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 54 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbButton"]
+anims/ToggleOff = SubResource( 55 )
+anims/ToggleOn = SubResource( 56 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 57 )
+script = ExtResource( 19 )
+
+[node name="RemainingPeopleButton" type="CheckButton" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 115.0
+margin_top = 108.0
+margin_right = 195.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 58 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RemainingPeopleButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RemainingPeopleButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RemainingPeopleButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RemainingPeopleButton"]
+anims/ToggleOff = SubResource( 59 )
+anims/ToggleOn = SubResource( 60 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RemainingPeopleButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 61 )
+script = ExtResource( 19 )
+
+[node name="Column3" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer"]
+margin_left = 628.0
+margin_right = 938.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection"]
+visible = false
+margin_left = 640.0
+margin_top = 47.0
+margin_right = 930.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Probability of infection"
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection"]
+visible = false
+margin_left = 640.0
+margin_top = 100.0
+margin_right = 930.0
+margin_bottom = 149.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Probability of infection"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit3" type="LineEdit" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection"]
+visible = false
+margin_left = 640.0
+margin_top = 154.0
+margin_right = 930.0
+margin_bottom = 201.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Probability of infection"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer"]
+show_behind_parent = true
+margin_top = 54.0
+margin_right = 940.0
+margin_bottom = 234.0
+rect_min_size = Vector2( 0, 180 )
+mouse_filter = 2
+alignment = 1
+
+[node name="TitleTransmission" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer"]
+margin_top = 238.0
+margin_right = 940.0
+margin_bottom = 288.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+text = "Transmission"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 50.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column1" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer"]
+margin_right = 310.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column1"]
+margin_right = 310.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InfectedPeople" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column1/VBoxContainer"]
+margin_right = 310.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Transmission probability for infected people.
+
+Note: 1% = 0,01
+
+Default: 0,5"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 14 )
+text = "Infected People"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column2" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer"]
+margin_left = 314.0
+margin_right = 625.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column2"]
+margin_right = 311.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+
+[node name="InfectedPeopleProbButton" type="CheckButton" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 115.0
+margin_right = 195.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 62 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column2/VBoxContainer/InfectedPeopleProbButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column2/VBoxContainer/InfectedPeopleProbButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column2/VBoxContainer/InfectedPeopleProbButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column2/VBoxContainer/InfectedPeopleProbButton"]
+anims/ToggleOff = SubResource( 63 )
+anims/ToggleOn = SubResource( 64 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column2/VBoxContainer/InfectedPeopleProbButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 65 )
+script = ExtResource( 19 )
+
+[node name="Column3" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer"]
+margin_left = 629.0
+margin_right = 940.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission"]
+visible = false
+margin_left = 640.0
+margin_top = 47.0
+margin_right = 930.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Probability of transmission"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer"]
+show_behind_parent = true
+margin_top = 292.0
+margin_right = 940.0
+margin_bottom = 352.0
+rect_min_size = Vector2( 0, 60 )
+mouse_filter = 2
+alignment = 1
+
+[node name="TitleDeath" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer"]
+margin_top = 356.0
+margin_right = 940.0
+margin_bottom = 406.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+text = "Death"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 50.0
+margin_right = -2.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column1" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer"]
+margin_right = 310.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column1"]
+margin_right = 310.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RecoveredPeople" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column1/VBoxContainer"]
+margin_right = 310.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Risk of death from infection if previously recovered.
+
+Note: 1% = 0,01
+
+Default: 0"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 14 )
+text = "Recovered People"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VaccinatedPeople" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 54.0
+margin_right = 310.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Risk of death from infection if vaccinated.
+
+Note: 1% = 0,01
+
+Default: 0"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 14 )
+text = "Vaccinated People"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RemainingPeople" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 108.0
+margin_right = 310.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Risk of death from infection if neither vaccinated nor recovered.
+
+Note: 1% = 0,01
+
+Default: 0,02"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 14 )
+text = "Remaining People"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column2" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer"]
+margin_left = 314.0
+margin_right = 624.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2"]
+margin_right = 310.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="RecoveredPeopleProbDeathButton" type="CheckButton" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 115.0
+margin_right = 195.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 54 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleProbDeathButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleProbDeathButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleProbDeathButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleProbDeathButton"]
+anims/ToggleOff = SubResource( 66 )
+anims/ToggleOn = SubResource( 67 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleProbDeathButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 68 )
+script = ExtResource( 19 )
+
+[node name="VaccinatedPeopleProbDeathButton" type="CheckButton" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 115.0
+margin_top = 54.0
+margin_right = 195.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 58 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbDeathButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbDeathButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbDeathButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbDeathButton"]
+anims/ToggleOff = SubResource( 69 )
+anims/ToggleOn = SubResource( 70 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbDeathButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 71 )
+script = ExtResource( 19 )
+
+[node name="RemainingPeopleProbDeathButton" type="CheckButton" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 115.0
+margin_top = 108.0
+margin_right = 195.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 50 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RemainingPeopleProbDeathButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RemainingPeopleProbDeathButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RemainingPeopleProbDeathButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RemainingPeopleProbDeathButton"]
+anims/ToggleOff = SubResource( 72 )
+anims/ToggleOn = SubResource( 73 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RemainingPeopleProbDeathButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 74 )
+script = ExtResource( 19 )
+
+[node name="Column3" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer"]
+margin_left = 628.0
+margin_right = 938.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath"]
+visible = false
+margin_left = 640.0
+margin_top = 47.0
+margin_right = 930.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Probability of death"
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath"]
+visible = false
+margin_left = 640.0
+margin_top = 100.0
+margin_right = 930.0
+margin_bottom = 149.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Probability of death"
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit3" type="LineEdit" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath"]
+visible = false
+margin_left = 640.0
+margin_top = 155.0
+margin_right = 930.0
+margin_bottom = 202.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Probability of death"
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer"]
+show_behind_parent = true
+margin_top = 410.0
+margin_right = 940.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 0, 180 )
+mouse_filter = 2
+alignment = 1
+
+[node name="TitleOthers" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer"]
+margin_top = 594.0
+margin_right = 940.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 14 )
+text = "Others"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 50.0
+margin_right = -2.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column1" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer"]
+margin_right = 310.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column1"]
+margin_right = 310.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MultiplyForIndoor" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column1/VBoxContainer"]
+margin_right = 310.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Multiplication if the simulation is indoor.
+
+Default: 2"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 14 )
+text = "Multiply for Indoor"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MedicalFaceMask" type="Label" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column1/VBoxContainer"]
+margin_top = 54.0
+margin_right = 310.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Multiplication of protection if the population wears medical masks.
+
+Default: 2"
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 14 )
+text = "Medical face mask"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column2" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer"]
+margin_left = 314.0
+margin_right = 624.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2"]
+margin_right = 310.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+
+[node name="MultiplyForIndoorButton" type="CheckButton" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 115.0
+margin_right = 195.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 75 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MultiplyForIndoorButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MultiplyForIndoorButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MultiplyForIndoorButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MultiplyForIndoorButton"]
+anims/ToggleOff = SubResource( 76 )
+anims/ToggleOn = SubResource( 77 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MultiplyForIndoorButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 78 )
+script = ExtResource( 19 )
+
+[node name="MedicalFaceMaskProbButton" type="CheckButton" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer"]
+margin_left = 115.0
+margin_top = 54.0
+margin_right = 195.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 80, 50 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/focus = SubResource( 79 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Base" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskProbButton"]
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 37.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskProbButton"]
+modulate = Color( 0, 0.529412, 1, 0 )
+margin_top = 4.5
+margin_right = 80.0
+margin_bottom = 36.5
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" type="NinePatchRect" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskProbButton"]
+margin_left = 5.0
+margin_top = 10.0
+margin_right = 27.0003
+margin_bottom = 32.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskProbButton"]
+anims/ToggleOff = SubResource( 80 )
+anims/ToggleOn = SubResource( 81 )
+
+[node name="AnimationTree" type="AnimationTree" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskProbButton"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 82 )
+script = ExtResource( 19 )
+
+[node name="Column3" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer"]
+margin_left = 628.0
+margin_right = 938.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers"]
+visible = false
+margin_left = 640.0
+margin_top = 47.0
+margin_right = 930.0
+margin_bottom = 94.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Multiplication of infection"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers"]
+visible = false
+margin_left = 640.0
+margin_top = 101.0
+margin_right = 930.0
+margin_bottom = 148.0
+custom_fonts/font = ExtResource( 14 )
+placeholder_text = "Multiplication of protection"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/Probabilities/ScrollContainer/VBoxContainer"]
+show_behind_parent = true
+margin_top = 648.0
+margin_right = 940.0
+margin_bottom = 768.0
+rect_min_size = Vector2( 0, 120 )
+mouse_filter = 2
+alignment = 1
+
+[connection signal="toggled" from="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/PopulationButton" to="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/PopulationButton/AnimationTree" method="_on_PopulationButton_toggled"]
+[connection signal="toggled" from="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/InfectedPeopleButton" to="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/InfectedPeopleButton/AnimationTree" method="_on_InfectedPersonsButton_toggled"]
+[connection signal="toggled" from="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleButton" to="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleButton/AnimationTree" method="_on_VaccinatedPeopleButton_toggled"]
+[connection signal="toggled" from="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/DaysToRecoverButton" to="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/DaysToRecoverButton/AnimationTree" method="_on_DaysToRecoverButton_toggled"]
+[connection signal="toggled" from="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/EdgeLengthButton" to="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/EdgeLengthButton/AnimationTree" method="_on_EdgeLengthButton_toggled"]
+[connection signal="toggled" from="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskButton" to="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskButton/AnimationTree" method="_on_MedicalFaceMaskButton_toggled"]
+[connection signal="toggled" from="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/OutInDoorsButton" to="TabContainer/Settings/HBoxContainer/Column2/VBoxContainer/OutInDoorsButton/AnimationTree" method="_on_OutInDoorsButton_toggled"]
+[connection signal="text_changed" from="TabContainer/Settings/LineEdit" to="TabContainer/Settings/LineEdit" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="TabContainer/Settings/LineEdit2" to="TabContainer/Settings/LineEdit2" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="TabContainer/Settings/LineEdit3" to="TabContainer/Settings/LineEdit3" method="_on_LineEdit3_text_changed"]
+[connection signal="text_changed" from="TabContainer/Settings/LineEdit4" to="TabContainer/Settings/LineEdit4" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="TabContainer/Settings/LineEdit5" to="TabContainer/Settings/LineEdit5" method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="TabContainer/Settings/SaveButton" to="TabContainer/Settings/SaveButton" method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="TabContainer/Settings/ResetButton" to="TabContainer/Settings/ResetButton" method="_on_ResetButton_pressed"]
+[connection signal="pressed" from="TabContainer/Settings/CancelButton" to="TabContainer/Settings/CancelButton" method="_on_CancelButton_pressed"]
+[connection signal="toggled" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleButton" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleButton/AnimationTree" method="_on_RecoveredPeopleButton_toggled"]
+[connection signal="toggled" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbButton" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbButton/AnimationTree" method="_on_VaccinatedPeopleProbButton_toggled"]
+[connection signal="toggled" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RemainingPeopleButton" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/HBoxContainer/Column2/VBoxContainer/RemainingPeopleButton/AnimationTree" method="_on_RemainingPeopleButton_toggled"]
+[connection signal="text_changed" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/LineEdit" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/LineEdit" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/LineEdit2" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/LineEdit2" method="_on_LineEdit2_text_changed"]
+[connection signal="text_changed" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/LineEdit3" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleRiskOfInfection/LineEdit3" method="_on_LineEdit3_text_changed"]
+[connection signal="toggled" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column2/VBoxContainer/InfectedPeopleProbButton" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/HBoxContainer/Column2/VBoxContainer/InfectedPeopleProbButton/AnimationTree" method="_on_InfectedPeopleProbButton_toggled"]
+[connection signal="text_changed" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/LineEdit" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleTransmission/LineEdit" method="_on_LineEdit_text_changed"]
+[connection signal="toggled" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleProbDeathButton" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RecoveredPeopleProbDeathButton/AnimationTree" method="_on_RecoveredPeopleProbDeathButton_toggled"]
+[connection signal="toggled" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbDeathButton" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/VaccinatedPeopleProbDeathButton/AnimationTree" method="_on_VaccinatedPeopleProbDeathButton_toggled"]
+[connection signal="toggled" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RemainingPeopleProbDeathButton" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/HBoxContainer/Column2/VBoxContainer/RemainingPeopleProbDeathButton/AnimationTree" method="_on_RemainingPeopleProbDeathButton_toggled"]
+[connection signal="text_changed" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/LineEdit" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/LineEdit" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/LineEdit2" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/LineEdit2" method="_on_LineEdit2_text_changed"]
+[connection signal="text_changed" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/LineEdit3" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleDeath/LineEdit3" method="_on_LineEdit3_text_changed"]
+[connection signal="toggled" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MultiplyForIndoorButton" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MultiplyForIndoorButton/AnimationTree" method="_on_MultiplyForIndoorButton_toggled"]
+[connection signal="toggled" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskProbButton" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/HBoxContainer/Column2/VBoxContainer/MedicalFaceMaskProbButton/AnimationTree" method="_on_MedicalFaceMaskProbButton_toggled"]
+[connection signal="text_changed" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/LineEdit" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/LineEdit" method="_on_LineEdit_text_changed"]
+[connection signal="text_changed" from="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/LineEdit2" to="TabContainer/Probabilities/ScrollContainer/VBoxContainer/TitleOthers/LineEdit2" method="_on_LineEdit2_text_changed"]

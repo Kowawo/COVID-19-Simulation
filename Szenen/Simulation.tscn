@@ -1,0 +1,958 @@
+[gd_scene load_steps=50 format=2]
+
+[ext_resource path="res://Ressource/SettingsFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Simulation/Result.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Simulation/Cancel.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Simulation/Camera.gd" type="Script" id=4]
+[ext_resource path="res://Ressource/Environment.tres" type="Environment" id=5]
+[ext_resource path="res://Scripts/Simulation/PlayStop.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Simulation/Simulation.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Simulation/FastForward2.gd" type="Script" id=8]
+[ext_resource path="res://Ressource/ButtonPressedNormal.tres" type="StyleBox" id=9]
+[ext_resource path="res://Ressource/ButtonHover.tres" type="StyleBox" id=10]
+[ext_resource path="res://Scripts/Simulation/FastForward3.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/Simulation/FastForward1.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/Simulation/Graph.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Simulation/BackResult.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/Simulation/ForwardResult.gd" type="Script" id=15]
+[ext_resource path="res://Images/SIcon.png" type="Texture" id=16]
+[ext_resource path="res://Images/WIcon.png" type="Texture" id=17]
+[ext_resource path="res://Images/AIcon.png" type="Texture" id=18]
+[ext_resource path="res://Images/DIcon.png" type="Texture" id=19]
+[ext_resource path="res://Images/MouseIcon.png" type="Texture" id=20]
+[ext_resource path="res://Images/TabIcon.png" type="Texture" id=21]
+[ext_resource path="res://Scripts/Simulation/Close.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/Simulation/TakeFirstPersonPerspective.gd" type="Script" id=23]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="InputEventKey" id=2]
+scancode = 16777231
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[sub_resource type="InputEventKey" id=4]
+scancode = 16777233
+
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.176471, 0.168627, 0.196078, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="InputEventKey" id=8]
+scancode = 16777221
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.176471, 0.168627, 0.196078, 1 )
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_bottom_right = 3
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="InputEventKey" id=14]
+scancode = 49
+
+[sub_resource type="ShortCut" id=15]
+shortcut = SubResource( 14 )
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="InputEventKey" id=17]
+scancode = 50
+
+[sub_resource type="ShortCut" id=18]
+shortcut = SubResource( 17 )
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="InputEventKey" id=20]
+scancode = 51
+
+[sub_resource type="ShortCut" id=21]
+shortcut = SubResource( 20 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.176471, 0.168627, 0.196078, 1 )
+border_width_left = 2
+border_width_bottom = 2
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.176471, 0.168627, 0.196078, 1 )
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.176471, 0.168627, 0.196078, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[node name="Simulation" type="Spatial"]
+script = ExtResource( 7 )
+
+[node name="Camera" type="Camera" parent="."]
+fov = 80.0
+far = 8192.0
+script = ExtResource( 4 )
+
+[node name="ResultDialog" type="WindowDialog" parent="."]
+margin_right = 960.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 960, 540 )
+custom_fonts/title_font = ExtResource( 1 )
+popup_exclusive = true
+window_title = "Result"
+resizable = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResultDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Graph" type="Node2D" parent="ResultDialog/VBoxContainer"]
+script = ExtResource( 13 )
+
+[node name="Back" type="Button" parent="ResultDialog"]
+margin_left = 15.0
+margin_top = 10.0
+margin_right = 65.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 3 )
+text = "<"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Forward" type="Button" parent="ResultDialog"]
+margin_left = 75.0
+margin_top = 10.0
+margin_right = 125.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 5 )
+text = ">"
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Toolbar" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -70.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Toolbar"]
+margin_left = 30.0
+margin_right = 930.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 900, 70 )
+custom_styles/panel = SubResource( 6 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar/Panel/HBoxContainer"]
+margin_right = 396.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PlayStopButton" type="Button" parent="Toolbar/Panel/HBoxContainer/HBoxContainer"]
+margin_left = 148.0
+margin_top = 15.0
+margin_right = 248.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 100, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 9 )
+text = "Play"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Toolbar/Panel/HBoxContainer"]
+margin_left = 400.0
+margin_top = 15.0
+margin_right = 500.0
+margin_bottom = 55.0
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ResultButton" type="Button" parent="Toolbar/Panel/HBoxContainer/HBoxContainer2"]
+margin_right = 100.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+text = "Result"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Toolbar/Panel/HBoxContainer"]
+margin_left = 504.0
+margin_right = 900.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="Toolbar/Panel/HBoxContainer/HBoxContainer3"]
+margin_left = 148.0
+margin_top = 15.0
+margin_right = 248.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 100, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+shortcut_in_tooltip = false
+text = "Cancel"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Toolbar2" type="HBoxContainer" parent="."]
+margin_right = 300.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Toolbar2"]
+margin_right = 300.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 300, 70 )
+hint_tooltip = "Here you will be able to pass the time faster. The setting will be applied the next day."
+custom_styles/panel = SubResource( 12 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar2/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar2/Panel/HBoxContainer"]
+margin_right = 97.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="FastForward1Button" type="Button" parent="Toolbar2/Panel/HBoxContainer/HBoxContainer"]
+margin_left = 23.0
+margin_top = 15.0
+margin_right = 73.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 50, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 15 )
+text = "x1"
+script = ExtResource( 12 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Toolbar2/Panel/HBoxContainer"]
+margin_left = 101.0
+margin_right = 198.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="FastForward2Button" type="Button" parent="Toolbar2/Panel/HBoxContainer/HBoxContainer2"]
+margin_left = 23.0
+margin_top = 15.0
+margin_right = 73.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 50, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 18 )
+text = "x2"
+script = ExtResource( 8 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Toolbar2/Panel/HBoxContainer"]
+margin_left = 202.0
+margin_right = 300.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="FastForward3Button" type="Button" parent="Toolbar2/Panel/HBoxContainer/HBoxContainer3"]
+margin_left = 24.0
+margin_top = 15.0
+margin_right = 74.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 50, 40 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_vertical = 4
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 21 )
+text = "x5"
+script = ExtResource( 11 )
+
+[node name="Toolbar3" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -300.0
+rect_min_size = Vector2( 300, 300 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Toolbar3"]
+margin_right = 300.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
+hint_tooltip = "You can take over the camera by pressing TAB.
+
+Use W, A, S, D and the MOUSE to move and rotate.
+
+Use SPACE to go up and CTRL to go down.
+
+If you press SHIFT, you will be able to move faster."
+mouse_filter = 1
+mouse_default_cursor_shape = 16
+custom_styles/panel = SubResource( 22 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar3/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwitchMode" type="Label" parent="Toolbar3/Panel/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 300, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "Switch mode"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar3/Panel/VBoxContainer"]
+margin_top = 44.0
+margin_right = 300.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 300, 50 )
+
+[node name="TabIcon" type="Sprite" parent="Toolbar3/Panel/VBoxContainer/HBoxContainer"]
+position = Vector2( 150, 15 )
+texture = ExtResource( 21 )
+
+[node name="Move" type="Label" parent="Toolbar3/Panel/VBoxContainer"]
+margin_top = 98.0
+margin_right = 300.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 300, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "Move"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Toolbar3/Panel/VBoxContainer"]
+margin_top = 142.0
+margin_right = 300.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 300, 50 )
+
+[node name="WIcon" type="Sprite" parent="Toolbar3/Panel/VBoxContainer/HBoxContainer2"]
+position = Vector2( 45, 15 )
+texture = ExtResource( 17 )
+
+[node name="AIcon" type="Sprite" parent="Toolbar3/Panel/VBoxContainer/HBoxContainer2"]
+position = Vector2( 115, 15 )
+texture = ExtResource( 18 )
+
+[node name="SIcon" type="Sprite" parent="Toolbar3/Panel/VBoxContainer/HBoxContainer2"]
+position = Vector2( 184, 15 )
+texture = ExtResource( 16 )
+
+[node name="DIcon" type="Sprite" parent="Toolbar3/Panel/VBoxContainer/HBoxContainer2"]
+position = Vector2( 253, 15 )
+texture = ExtResource( 19 )
+
+[node name="RotateCamera" type="Label" parent="Toolbar3/Panel/VBoxContainer"]
+margin_top = 196.0
+margin_right = 300.0
+margin_bottom = 236.0
+rect_min_size = Vector2( 300, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "Rotate camera"
+align = 1
+valign = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Toolbar3/Panel/VBoxContainer"]
+margin_top = 240.0
+margin_right = 300.0
+margin_bottom = 240.0
+
+[node name="MouseIcon" type="Sprite" parent="Toolbar3/Panel/VBoxContainer/HBoxContainer3"]
+position = Vector2( 150, 15 )
+texture = ExtResource( 20 )
+
+[node name="Toolbar4" type="HBoxContainer" parent="."]
+margin_top = 80.0
+margin_right = 300.0
+margin_bottom = 430.0
+rect_min_size = Vector2( 300, 300 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Toolbar4"]
+margin_right = 300.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 300, 300 )
+custom_styles/panel = SubResource( 23 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar4/Panel"]
+margin_right = 300.0
+margin_bottom = 340.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 84.0
+size_flags_vertical = 2
+
+[node name="Day" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 300, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "Day"
+align = 1
+valign = 1
+
+[node name="DayCounter" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 300.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 300, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "{Zahl}"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer"]
+margin_top = 88.0
+margin_right = 300.0
+margin_bottom = 169.0
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Population" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2"]
+margin_right = 300.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 300, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "Population"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2"]
+margin_top = 44.0
+margin_right = 300.0
+margin_bottom = 63.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 148.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="PopulationCounterTotal" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
+margin_right = 148.0
+margin_bottom = 19.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "{Zahl}"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 152.0
+margin_right = 300.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="PopulationCounterDay" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2"]
+margin_right = 148.0
+margin_bottom = 19.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "{Zahl}"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2"]
+margin_top = 67.0
+margin_right = 300.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2/HBoxContainer2"]
+margin_right = 148.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="PopulationCounterTotalLabel" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2/HBoxContainer2/VBoxContainer"]
+margin_right = 148.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+text = "Total"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2/HBoxContainer2"]
+margin_left = 152.0
+margin_right = 300.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="PopulationCounterTotalLabel" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer2/HBoxContainer2/VBoxContainer2"]
+margin_right = 148.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+text = "Per day"
+align = 1
+valign = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer"]
+margin_top = 173.0
+margin_right = 300.0
+margin_bottom = 254.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfectedPeople" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3"]
+margin_right = 300.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 300, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "Infected people"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3"]
+margin_top = 44.0
+margin_right = 300.0
+margin_bottom = 63.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3/HBoxContainer"]
+margin_right = 148.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="InfectedPeopleCounterTotal" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_right = 148.0
+margin_bottom = 19.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "{Zahl}"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3/HBoxContainer"]
+margin_left = 152.0
+margin_right = 300.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="InfectedPeopleCounterDay" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+margin_right = 148.0
+margin_bottom = 19.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "{Zahl}"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3"]
+margin_top = 67.0
+margin_right = 300.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3/HBoxContainer2"]
+margin_right = 148.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="InfectedPeopleCounterTotalLabel" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
+margin_right = 148.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+text = "Total"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3/HBoxContainer2"]
+margin_left = 152.0
+margin_right = 300.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="InfectedPeopleCounterDayLabel" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+margin_right = 148.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+text = "Per day"
+align = 1
+valign = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer"]
+margin_top = 258.0
+margin_right = 300.0
+margin_bottom = 340.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Deaths" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4"]
+margin_right = 300.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 300, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "Deaths"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4"]
+margin_top = 44.0
+margin_right = 300.0
+margin_bottom = 63.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_right = 148.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="DeathsCounterTotal" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4/HBoxContainer/VBoxContainer"]
+margin_right = 148.0
+margin_bottom = 19.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "{Zahl}"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4/HBoxContainer"]
+margin_left = 152.0
+margin_right = 300.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="DeathsCounterDay" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4/HBoxContainer/VBoxContainer2"]
+margin_right = 148.0
+margin_bottom = 19.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "{Zahl}"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4"]
+margin_top = 67.0
+margin_right = 300.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4/HBoxContainer2"]
+margin_right = 148.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="DeathsCounterTotalLabel" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4/HBoxContainer2/VBoxContainer"]
+margin_right = 148.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+text = "Total"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4/HBoxContainer2"]
+margin_left = 152.0
+margin_right = 300.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="DeathsCounterDayLabel" type="Label" parent="Toolbar4/Panel/VBoxContainer/VBoxContainer4/HBoxContainer2/VBoxContainer2"]
+margin_right = 148.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+text = "Per day"
+align = 1
+valign = 1
+
+[node name="Toolbar5" type="HBoxContainer" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -300.0
+margin_top = 310.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 300, 230 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Toolbar5"]
+margin_right = 300.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 300, 230 )
+custom_styles/panel = SubResource( 24 )
+
+[node name="CloseButton" type="Button" parent="Toolbar5/Panel"]
+margin_left = 260.0
+margin_top = 10.0
+margin_right = 290.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 30 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = SubResource( 25 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+text = "x"
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar5/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 45.0
+margin_right = 4.0
+margin_bottom = -13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar5/Panel/VBoxContainer"]
+margin_right = 304.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Toolbar5/Panel/VBoxContainer/HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 59.0
+
+[node name="InfectedPersonLabel" type="Label" parent="Toolbar5/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 150.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 150, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "Infected"
+align = 1
+valign = 1
+
+[node name="InfectedPersonBoolLabel" type="Label" parent="Toolbar5/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 150.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 150, 15 )
+text = "{Bool}"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Toolbar5/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 154.0
+margin_right = 304.0
+margin_bottom = 59.0
+
+[node name="VaccinatedPersonLabel" type="Label" parent="Toolbar5/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 150.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 150, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "Vaccinated"
+align = 1
+valign = 1
+
+[node name="VaccinatedPersonBoolLabel" type="Label" parent="Toolbar5/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 44.0
+margin_right = 150.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 150, 15 )
+text = "{Bool}"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Toolbar5/Panel/VBoxContainer"]
+margin_top = 63.0
+margin_right = 304.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="HasBeenInfectedLabel" type="Label" parent="Toolbar5/Panel/VBoxContainer"]
+margin_top = 87.0
+margin_right = 304.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 300, 40 )
+custom_fonts/font = ExtResource( 1 )
+text = "Has been infected {Zahl} times"
+align = 1
+valign = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Toolbar5/Panel/VBoxContainer"]
+margin_top = 131.0
+margin_right = 304.0
+margin_bottom = 171.0
+alignment = 1
+
+[node name="TakeFirstPersonPerspectiveButton" type="Button" parent="Toolbar5/Panel/VBoxContainer/HBoxContainer3"]
+margin_left = 22.0
+margin_right = 282.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 260, 40 )
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = SubResource( 26 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 1 )
+text = "Take first person perspective"
+script = ExtResource( 23 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )
+
+[connection signal="pressed" from="ResultDialog/Back" to="ResultDialog/Back" method="_on_Back_pressed"]
+[connection signal="pressed" from="ResultDialog/Forward" to="ResultDialog/Forward" method="_on_Forward_pressed"]
+[connection signal="pressed" from="Toolbar/Panel/HBoxContainer/HBoxContainer/PlayStopButton" to="Toolbar/Panel/HBoxContainer/HBoxContainer/PlayStopButton" method="_on_PlayStopButton_pressed"]
+[connection signal="pressed" from="Toolbar/Panel/HBoxContainer/HBoxContainer2/ResultButton" to="Toolbar/Panel/HBoxContainer/HBoxContainer2/ResultButton" method="_on_ResultButton_pressed"]
+[connection signal="pressed" from="Toolbar/Panel/HBoxContainer/HBoxContainer3/CancelButton" to="Toolbar/Panel/HBoxContainer/HBoxContainer3/CancelButton" method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="Toolbar2/Panel/HBoxContainer/HBoxContainer/FastForward1Button" to="Toolbar2/Panel/HBoxContainer/HBoxContainer/FastForward1Button" method="_on_FastForward1Button_pressed"]
+[connection signal="pressed" from="Toolbar2/Panel/HBoxContainer/HBoxContainer2/FastForward2Button" to="Toolbar2/Panel/HBoxContainer/HBoxContainer2/FastForward2Button" method="_on_FastForward2Button_pressed"]
+[connection signal="pressed" from="Toolbar2/Panel/HBoxContainer/HBoxContainer3/FastForward3Button" to="Toolbar2/Panel/HBoxContainer/HBoxContainer3/FastForward3Button" method="_on_FastForward3Button_pressed"]
+[connection signal="pressed" from="Toolbar5/Panel/CloseButton" to="Toolbar5/Panel/CloseButton" method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Toolbar5/Panel/VBoxContainer/HBoxContainer3/TakeFirstPersonPerspectiveButton" to="Toolbar5/Panel/VBoxContainer/HBoxContainer3/TakeFirstPersonPerspectiveButton" method="_on_TakeFirstPersonPerspectiveButton_pressed"]
